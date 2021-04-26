@@ -16,4 +16,28 @@ describe('Tests for main component', () => {
 
     expect(count.innerHTML).toBe('0');
   });
+
+  test('count displays 1 when increment button is clicked', () => {
+    let count;
+
+    render(<Main />);
+    count = screen.getByTestId('count-display');
+    const increment = screen.getByTestId('increment-button');
+
+    fireEvent.click(increment);
+
+    expect(count.innerHTML).toBe('1');
+  });
+
+  test('count displays -1 when decrement button is clicked', () => {
+    let count;
+
+    render(<Main />);
+    count = screen.getByTestId('count-display');
+    const decrement = screen.getByTestId('decrement-button');
+
+    fireEvent.click(decrement);
+
+    expect(count.innerHTML).toBe('-1');
+  });
 });
